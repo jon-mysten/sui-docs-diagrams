@@ -1,0 +1,49 @@
+Sui Docs Diagrams
+Copyright 2026 Sui Docs Diagrams contributors
+
+This product includes software developed by the Sui Docs Diagrams
+contributors and is licensed under the Apache License, Version 2.0. See
+the LICENSE file in this repository for the full license text.
+
+================================================================================
+Third-party content bundled with this distribution
+================================================================================
+
+1. Sui brand assets (logos, fonts)
+   Location:  assets/logos/, assets/fonts/
+   Source:    https://live.standards.site/sui-media-kit
+   Notes:     The Sui logos and brand-kit fonts (Inter, Inter Tight, DM Mono)
+              are redistributed here from the Sui Media Kit for the purpose
+              of generating Sui-compliant technical diagrams in accordance
+              with the kit's brand-use terms. The fonts in particular are
+              static-weight extractions packaged for use with Claude Design
+              and Mermaid; they remain subject to their upstream licenses.
+
+              - Inter (Inter-{Regular,Medium,Bold}, InterTight-*): SIL Open
+                Font License 1.1. See https://github.com/rsms/inter
+              - DM Mono (DMMono-Regular): SIL Open Font License 1.1.
+                See https://fonts.google.com/specimen/DM+Mono
+
+              The Sui logo trademarks are not licensed for arbitrary use.
+              Use of the Sui name and logo in a derivative work or
+              downstream product requires permission from Mysten Labs. See
+              https://sui.io for current trademark guidance.
+
+2. Documentation references and example diagrams
+   Location:  design-system/examples/, SOURCES.md
+   Notes:     The example diagrams in this repository are recreations of
+              canonical diagrams published at https://docs.sui.io. The
+              Sui documentation is licensed CC BY 4.0
+              (https://creativecommons.org/licenses/by/4.0/). Example
+              recreations carry the same attribution; see SOURCES.md for
+              the per-example provenance.
+
+================================================================================
+Relationship to Mysten Labs
+================================================================================
+
+This repository is community-maintained tooling for the Sui documentation
+ecosystem. It is not an official Mysten Labs project. Mysten Labs, the Sui
+Foundation, and the Walrus Foundation do not guarantee the functionality,
+security, or compatibility of this package with the latest platform
+updates.

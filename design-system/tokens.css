@@ -1,0 +1,156 @@
+/**
+ * Sui Technical Diagram Design System
+ * ───────────────────────────────────
+ * CSS custom properties + @font-face declarations.
+ *
+ * Source of truth: ../DESIGN.md
+ * Upstream: https://docs.sui.io/references/contribute/diagram-standards
+ *           https://live.standards.site/sui-media-kit
+ *
+ * Fonts are shipped as static-weight WOFF2 (preferred) + TTF (fallback).
+ * One @font-face block per weight. Variable axes confuse some font
+ * extractors, including Claude Design's onboarding analyzer.
+ */
+
+/* ────────── Inter (weights 400, 500, 700) ────────── */
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../assets/fonts/Inter-Regular.woff2') format('woff2'),
+       url('../assets/fonts/Inter-Regular.ttf')   format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../assets/fonts/Inter-Medium.woff2') format('woff2'),
+       url('../assets/fonts/Inter-Medium.ttf')   format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../assets/fonts/Inter-Bold.woff2') format('woff2'),
+       url('../assets/fonts/Inter-Bold.ttf')   format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ────────── Inter Tight (weights 400, 500, 700) ────────── */
+
+@font-face {
+  font-family: 'Inter Tight';
+  src: url('../assets/fonts/InterTight-Regular.woff2') format('woff2'),
+       url('../assets/fonts/InterTight-Regular.ttf')   format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter Tight';
+  src: url('../assets/fonts/InterTight-Medium.woff2') format('woff2'),
+       url('../assets/fonts/InterTight-Medium.ttf')   format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter Tight';
+  src: url('../assets/fonts/InterTight-Bold.woff2') format('woff2'),
+       url('../assets/fonts/InterTight-Bold.ttf')   format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ────────── DM Mono (weight 400, code identifiers) ────────── */
+
+@font-face {
+  font-family: 'DM Mono';
+  src: url('../assets/fonts/DMMono-Regular.woff2') format('woff2'),
+       url('../assets/fonts/DMMono-Regular.ttf')   format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ────────── Design tokens ────────── */
+
+:root {
+  /* Core palette */
+  --sui-black:       #000000;
+  --sui-white:       #FFFFFF;
+  --sui-gray-500:    #6C7584;
+  --sui-blue-500:    #298DFF;
+
+  /* Extended Blue */
+  --sui-blue-50:     #F2FAFF;
+  --sui-blue-100:    #DDF2FF;
+  --sui-blue-200:    #BCE2FF;
+  --sui-blue-300:    #8FCBFF;
+  --sui-blue-400:    #5CA9FF;
+  --sui-blue-600:    #1759C4;
+  --sui-blue-700:    #002E6A;
+  --sui-blue-800:    #001129;
+  --sui-blue-900:    #00060F;
+
+  /* Extended Gray */
+  --sui-gray-50:     #F4F5F7;
+  --sui-gray-100:    #E0E2E6;
+  --sui-gray-200:    #C2C6CD;
+  --sui-gray-300:    #A1A7B2;
+  --sui-gray-400:    #89919F;
+  --sui-gray-600:    #4B515B;
+  --sui-gray-700:    #343940;
+  --sui-gray-800:    #222529;
+  --sui-gray-900:    #131518;
+
+  /* Semantic tokens */
+  --sui-note-bg:                 #E6F1FB;
+  --sui-note-border:             #298DFF;
+  --sui-activation-bg:           #298DFF;
+  --sui-activation-border:       #185FA5;
+
+  /* Diagram role tokens */
+  --sui-node-primary-fill:       var(--sui-black);
+  --sui-node-primary-text:       var(--sui-white);
+  --sui-node-secondary-fill:     var(--sui-gray-500);
+  --sui-node-secondary-text:     var(--sui-white);
+  --sui-node-tertiary-fill:      var(--sui-blue-500);
+  --sui-node-tertiary-text:      var(--sui-white);
+  --sui-actor-stroke:            var(--sui-gray-500);
+  --sui-actor-text:              var(--sui-black);
+  --sui-external-stroke:         var(--sui-gray-500);
+  --sui-boundary-stroke:         var(--sui-gray-700);
+  --sui-boundary-text:           var(--sui-black);
+  --sui-arrow-stroke:            var(--sui-blue-500);
+  --sui-arrow-text:              var(--sui-blue-600);
+  --sui-tertiary-fill-large:     var(--sui-blue-500);
+  --sui-tertiary-fill-small:     var(--sui-blue-600);
+
+  /* Typography */
+  --sui-font-diagram:            'Inter', 'Inter Tight', system-ui, sans-serif;
+  --sui-font-mono:               'DM Mono', ui-monospace, SFMono-Regular, monospace;
+  --sui-font-size:               14px;
+  --sui-font-size-sub:           12px;
+  --sui-font-weight-regular:     400;
+  --sui-font-weight-medium:      500;
+  --sui-font-weight-bold:        700;
+
+  /* Layout */
+  --sui-grid:                    8px;
+  --sui-node-padding-y:          12px;
+  --sui-node-padding-x:          16px;
+  --sui-boundary-padding:        40px;
+  --sui-node-radius:             0;
+  --sui-stroke-thin:             1px;
+  --sui-stroke-medium:           1.5px;
+  --sui-dash-pattern:            6 4;
+}

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sui technical diagram design system</title>
+<link rel="stylesheet" href="./styles.css">
+<style>
+  .hero {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 48px;
+    padding: 32px;
+    background: var(--sui-blue-50);
+    border: 1px solid var(--sui-blue-200);
+  }
+  .hero svg { flex-shrink: 0; }
+  .hero h1 { margin: 0 0 8px; font-size: 28px; }
+  .hero p { margin: 0; color: var(--sui-gray-700); }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .card {
+    border: 1px solid var(--sui-gray-100);
+    padding: 20px;
+    background: var(--sui-white);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s;
+  }
+  .card:hover { border-color: var(--sui-blue-500); }
+  .card .level {
+    display: inline-block;
+    padding: 2px 8px;
+    background: var(--sui-blue-50);
+    color: var(--sui-blue-700);
+    font-size: 11px;
+    font-weight: 500;
+    border: 1px solid var(--sui-blue-200);
+    margin-bottom: 8px;
+  }
+  .card h3 { margin: 0 0 4px; font-size: 16px; font-weight: 500; }
+  .card p { margin: 0; font-size: 13px; color: var(--sui-gray-600); }
+</style>
+</head>
+<body>
+<main>
+  <div class="hero">
+    <svg width="64" height="80" viewBox="0 0 783 1000" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M626.027 417.029C666.817 468.244 691.209 533.014 691.209 603.469C691.209 673.925 666.076 740.673 624.214 792.176L620.588 796.626L619.641 790.981C618.817 786.201 617.869 781.34 616.757 776.478C595.785 684.349 527.471 605.365 415.03 541.378C339.095 498.28 295.626 446.448 284.213 387.487C276.838 349.375 282.318 311.098 292.907 278.301C303.496 245.545 319.235 218.063 332.626 201.541L376.383 148.06C384.046 138.666 398.426 138.666 406.09 148.06L626.068 417.029H626.027ZM695.206 363.59L402.01 5.12968C396.407 -1.70989 385.942 -1.70989 380.338 5.12968L87.184 363.59L86.2363 364.784C32.3026 431.738 0 516.821 0 609.444C0 825.138 175.151 1000 391.174 1000C607.198 1000 782.349 825.138 782.349 609.444C782.349 516.821 750.046 431.738 696.112 364.826L695.165 363.631L695.206 363.59ZM157.351 415.876L183.556 383.779L184.339 389.712C184.957 394.409 185.74 399.106 186.646 403.844C203.622 492.883 264.23 567.088 365.546 624.565C453.637 674.708 504.934 732.35 519.684 795.554C525.864 821.924 526.936 847.881 524.258 870.584L524.093 871.985L522.816 872.603C483.055 892.009 438.351 902.927 391.133 902.927C225.459 902.927 91.1394 768.855 91.1394 603.428C91.1394 532.396 115.902 467.172 157.269 415.793L157.351 415.876Z"
+            fill="#298DFF"/>
+    </svg>
+    <div>
+      <h1>Sui technical diagram design system</h1>
+      <p>C4-model-correct, Sui-brand-compliant diagrams for documentation.</p>
+    </div>
+  </div>
+
+  <h2>Rendered examples by C4 level</h2>
+  <p style="font-size:14px;color:var(--sui-gray-700);margin:0 0 8px">
+    Each example shows the diagram, its source, and the compliance rules it
+    satisfies. Open any in a browser to see exactly what brand-compliant
+    output looks like.
+  </p>
+  <div class="grid">
+    <a class="card" href="./examples/context-sui-network.html">
+      <span class="level">Level 1 · Context</span>
+      <h3>Sui network</h3>
+      <p>System boundary and external actors. No internal containers.</p>
+    </a>
+    <a class="card" href="./examples/architecture-data-serving.html">
+      <span class="level">Level 2 · Architecture</span>
+      <h3>Data-serving stack</h3>
+      <p>Full Node → Indexer → RPC Server with operator boundary.</p>
+    </a>
+    <a class="card" href="./examples/sequence-transaction.html">
+      <span class="level">Level 4 · Sequence</span>
+      <h3>Transaction lifecycle</h3>
+      <p>Client and validators with fan-out broadcast and phase bars.</p>
+    </a>
+    <a class="card" href="./examples/flowchart-object-transfer.html">
+      <span class="level">Level 4 · Flowchart</span>
+      <h3>Object transfer</h3>
+      <p>State transitions with a decision diamond and byproduct objects.</p>
+    </a>
+  </div>
+
+  <h2>Anti-examples (do not pattern-match)</h2>
+  <p style="font-size:14px;color:var(--sui-gray-700);margin:0 0 8px">
+    Diagrams from the live Sui docs that predate the current standards.
+    Each one is shown next to a compliant rewrite. Read these to learn
+    what to <em>avoid</em>.
+  </p>
+  <div class="grid">
+    <a class="card" href="./examples/anti-example-transactions-flowchart.html"
+       style="border-left:3px solid #A32D2D">
+      <span class="level" style="background:#FBEAF0;color:#A32D2D;border-color:#F09595">Anti-example</span>
+      <h3>transactions.mdx flowchart</h3>
+      <p>Off-palette ARGB hex fills and gray arrows. Compliant rewrite included.</p>
+    </a>
+  </div>
+
+  <h2>Foundations</h2>
+  <div class="grid">
+    <a class="card" href="./components/diagram-primitives.html">
+      <h3>Diagram primitives</h3>
+      <p>Every node, arrow, and shape with hex values, casing rules, and Sui-brand labels.</p>
+    </a>
+    <a class="card" href="./anti-patterns.html">
+      <h3>Anti-patterns gallery</h3>
+      <p>Five common mistakes as do/don't pairs: wrong arrow color, rounded rectangles, ellipses, and more.</p>
+    </a>
+    <a class="card" href="./font-specimen.html">
+      <h3>Font specimen</h3>
+      <p>Open in a browser to verify Inter, Inter Tight, and DM Mono load correctly before uploading.</p>
+    </a>
+    <a class="card" href="./tokens.css">
+      <h3>tokens.css</h3>
+      <p>CSS custom properties for every Sui color, font family, and layout value.</p>
+    </a>
+    <a class="card" href="./tokens.json">
+      <h3>tokens.json</h3>
+      <p>Machine-readable tokens for tooling, MCP servers, or build pipelines.</p>
+    </a>
+    <a class="card" href="./components/SuiDiagram.jsx">
+      <h3>SuiDiagram.jsx</h3>
+      <p>React primitives: Node, Arrow, Diamond, Boundary, plus Lifeline, PhaseBar, StepLabel, and FanOut for sequence diagrams. The <code>&lt;Diagram level&gt;</code> wrapper enforces C4-level shape rules in development mode.</p>
+    </a>
+    <a class="card" href="./components/svg-components.svg">
+      <h3>svg-components.svg</h3>
+      <p>Standalone SVG primitive library with the canonical Sui droplet symbol.</p>
+    </a>
+  </div>
+</main>
+</body>
+</html>

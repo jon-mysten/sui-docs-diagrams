@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Sui C4 Design System — SVG Component Library
+  ──────────────────────────────────────────────
+  Reusable, brand-compliant SVG primitives for technical diagrams.
+  Every primitive obeys Sui core palette + C4 shape semantics.
+
+  USAGE
+  ─────
+  1. Copy the <defs> block into your target SVG.
+  2. Reference primitives via <use href="#primary-node" .../> or copy the
+     individual <g> templates and substitute label text.
+  3. All colors are inlined (hex) so the file renders standalone.
+
+  Canonical sources:
+    – https://docs.sui.io/references/contribute/diagram-standards
+    – https://live.standards.site/sui-media-kit
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1200" height="1600"
+     viewBox="0 0 1200 1600"
+     font-family="Inter, sans-serif"
+     font-size="14"
+     style="background:#FFFFFF">
+
+  <!-- ────────── DEFS: arrow markers + reusable symbols ────────── -->
+  <defs>
+    <!-- Synchronous: solid line, filled triangle head (Sui Blue 500) -->
+    <marker id="arrow-sync" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#298DFF"/>
+    </marker>
+
+    <!-- Asynchronous: dashed line, open arrowhead (Sui Blue 500) -->
+    <marker id="arrow-async" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#298DFF" stroke-width="1.5"/>
+    </marker>
+
+    <!-- Sui droplet logo (canonical path from the brand kit) -->
+    <symbol id="sui-droplet" viewBox="0 0 783 1000">
+      <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M626.027 417.029C666.817 468.244 691.209 533.014 691.209 603.469C691.209 673.925 666.076 740.673 624.214 792.176L620.588 796.626L619.641 790.981C618.817 786.201 617.869 781.34 616.757 776.478C595.785 684.349 527.471 605.365 415.03 541.378C339.095 498.28 295.626 446.448 284.213 387.487C276.838 349.375 282.318 311.098 292.907 278.301C303.496 245.545 319.235 218.063 332.626 201.541L376.383 148.06C384.046 138.666 398.426 138.666 406.09 148.06L626.068 417.029H626.027ZM695.206 363.59L402.01 5.12968C396.407 -1.70989 385.942 -1.70989 380.338 5.12968L87.184 363.59L86.2363 364.784C32.3026 431.738 0 516.821 0 609.444C0 825.138 175.151 1000 391.174 1000C607.198 1000 782.349 825.138 782.349 609.444C782.349 516.821 750.046 431.738 696.112 364.826L695.165 363.631L695.206 363.59ZM157.351 415.876L183.556 383.779L184.339 389.712C184.957 394.409 185.74 399.106 186.646 403.844C203.622 492.883 264.23 567.088 365.546 624.565C453.637 674.708 504.934 732.35 519.684 795.554C525.864 821.924 526.936 847.881 524.258 870.584L524.093 871.985L522.816 872.603C483.055 892.009 438.351 902.927 391.133 902.927C225.459 892.927 91.1394 768.855 91.1394 603.428C91.1394 532.396 115.902 467.172 157.269 415.793L157.351 415.876Z"
+            fill="#298DFF"/>
+    </symbol>
+
+    <!-- Cylinder data-store icon -->
+    <symbol id="data-store" viewBox="0 0 160 100">
+      <ellipse cx="80" cy="14" rx="60" ry="12" fill="#000000"/>
+      <path d="M 20 14 L 20 86 A 60 12 0 0 0 140 86 L 140 14" fill="#000000"/>
+      <ellipse cx="80" cy="14" rx="60" ry="12" fill="none" stroke="#FFFFFF" stroke-width="1"/>
+    </symbol>
+
+    <!-- Server-stack icon (data store alternative) -->
+    <symbol id="server-stack" viewBox="0 0 160 100">
+      <rect x="10" y="10"  width="140" height="22" fill="#000000"/>
+      <rect x="10" y="38"  width="140" height="22" fill="#000000"/>
+      <rect x="10" y="66"  width="140" height="22" fill="#000000"/>
+      <circle cx="20" cy="21" r="3" fill="#298DFF"/>
+      <circle cx="20" cy="49" r="3" fill="#298DFF"/>
+      <circle cx="20" cy="77" r="3" fill="#298DFF"/>
+    </symbol>
+  </defs>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       SECTION 1 — CORE PALETTE SWATCHES
+       ════════════════════════════════════════════════════════════════════ -->
+  <g transform="translate(40, 40)">
+    <text x="0" y="0" font-size="18" font-weight="700" fill="#000000">Core palette</text>
+
+    <g transform="translate(0, 24)">
+      <rect width="120" height="60" fill="#000000"/>
+      <text x="60" y="36" fill="#FFFFFF" text-anchor="middle" font-size="12">BLACK</text>
+      <text x="60" y="78" fill="#000000" text-anchor="middle" font-size="11">#000000</text>
+    </g>
+
+    <g transform="translate(140, 24)">
+      <rect width="120" height="60" fill="#6C7584"/>
+      <text x="60" y="36" fill="#FFFFFF" text-anchor="middle" font-size="12">GRAY 500</text>
+      <text x="60" y="78" fill="#000000" text-anchor="middle" font-size="11">#6C7584</text>
+    </g>
+
+    <g transform="translate(280, 24)">
+      <rect width="120" height="60" fill="#298DFF"/>
+      <text x="60" y="36" fill="#FFFFFF" text-anchor="middle" font-size="12">SUI BLUE 500</text>
+      <text x="60" y="78" fill="#000000" text-anchor="middle" font-size="11">#298DFF</text>
+    </g>
+
+    <g transform="translate(420, 24)">
+      <rect width="120" height="60" fill="#FFFFFF" stroke="#6C7584" stroke-width="1"/>
+      <text x="60" y="36" fill="#000000" text-anchor="middle" font-size="12">WHITE</text>
+      <text x="60" y="78" fill="#000000" text-anchor="middle" font-size="11">#FFFFFF</text>
+    </g>
+  </g>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       SECTION 2 — NODE PRIMITIVES (with role labels)
+       ════════════════════════════════════════════════════════════════════ -->
+  <g transform="translate(40, 160)">
+    <text x="0" y="0" font-size="18" font-weight="700" fill="#000000">Node primitives</text>
+
+    <!-- Primary node: Black fill, white ALL-CAPS label -->
+    <g transform="translate(0, 24)" id="primary-node-example">
+      <rect width="180" height="64" fill="#000000"/>
+      <text x="90" y="32" fill="#FFFFFF" text-anchor="middle"
+            dominant-baseline="middle" font-size="13" font-weight="600"
+            letter-spacing="0.5">SUI FULL NODE</text>
+      <text x="90" y="50" fill="#298DFF" text-anchor="middle"
+            dominant-baseline="middle" font-size="10">gRPC</text>
+      <text x="90" y="86" fill="#000000" text-anchor="middle" font-size="11">Primary</text>
+    </g>
+
+    <!-- Secondary node: Gray 500 fill -->
+    <g transform="translate(200, 24)">
+      <rect width="180" height="64" fill="#6C7584"/>
+      <text x="90" y="32" fill="#FFFFFF" text-anchor="middle"
+            dominant-baseline="middle" font-size="13" font-weight="600"
+            letter-spacing="0.5">INDEXER</text>
+      <text x="90" y="50" fill="#FFFFFF" text-anchor="middle"
+            dominant-baseline="middle" font-size="10">Supporting</text>
+      <text x="90" y="86" fill="#000000" text-anchor="middle" font-size="11">Secondary</text>
+    </g>
+
+    <!-- Tertiary node: Sui Blue 500 fill -->
+    <g transform="translate(400, 24)">
+      <rect width="180" height="64" fill="#298DFF"/>
+      <text x="90" y="38" fill="#FFFFFF" text-anchor="middle"
+            dominant-baseline="middle" font-size="13" font-weight="600"
+            letter-spacing="0.5">RPC SERVER</text>
+      <text x="90" y="86" fill="#000000" text-anchor="middle" font-size="11">Tertiary / accent</text>
+    </g>
+
+    <!-- Actor: outline only, gray stroke, black sentence-case text -->
+    <g transform="translate(600, 24)">
+      <rect width="180" height="64" fill="none" stroke="#6C7584" stroke-width="1.5"/>
+      <text x="90" y="38" fill="#000000" text-anchor="middle"
+            dominant-baseline="middle" font-size="13">Wallet user</text>
+      <text x="90" y="86" fill="#000000" text-anchor="middle" font-size="11">Actor</text>
+    </g>
+
+    <!-- External system: dashed border -->
+    <g transform="translate(800, 24)">
+      <rect width="180" height="64" fill="none" stroke="#6C7584"
+            stroke-width="1.5" stroke-dasharray="6 4"/>
+      <text x="90" y="38" fill="#000000" text-anchor="middle"
+            dominant-baseline="middle" font-size="13">Oracle service</text>
+      <text x="90" y="86" fill="#000000" text-anchor="middle" font-size="11">External system</text>
+    </g>
+  </g>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       SECTION 3 — SPECIAL SHAPES (decision diamond, data store, boundary)
+       ════════════════════════════════════════════════════════════════════ -->
+  <g transform="translate(40, 300)">
+    <text x="0" y="0" font-size="18" font-weight="700" fill="#000000">Special shapes</text>
+
+    <!-- Decision diamond (flowchart / sequence only) -->
+    <g transform="translate(0, 30)">
+      <polygon points="80,0 160,50 80,100 0,50" fill="#000000"/>
+      <text x="80" y="50" fill="#FFFFFF" text-anchor="middle"
+            dominant-baseline="middle" font-size="12" font-weight="600">VALID?</text>
+      <text x="80" y="120" fill="#000000" text-anchor="middle" font-size="11">Decision (flowchart / sequence only)</text>
+    </g>
+
+    <!-- Data store -->
+    <g transform="translate(220, 30)">
+      <use href="#data-store" x="0" y="0" width="160" height="100"/>
+      <text x="80" y="55" fill="#FFFFFF" text-anchor="middle"
+            dominant-baseline="middle" font-size="12" font-weight="600"
+            letter-spacing="0.5">POSTGRES</text>
+      <text x="80" y="120" fill="#000000" text-anchor="middle" font-size="11">Data store</text>
+    </g>
+
+    <!-- Boundary rectangle -->
+    <g transform="translate(440, 30)">
+      <rect x="0" y="14" width="280" height="100" fill="none"
+            stroke="#343940" stroke-width="1.5"/>
+      <text x="0" y="8" fill="#000000" font-size="12">Data indexer operator stack</text>
+      <rect x="20" y="40" width="100" height="48" fill="#000000"/>
+      <text x="70" y="64" fill="#FFFFFF" text-anchor="middle"
+            dominant-baseline="middle" font-size="11">INDEXER</text>
+      <rect x="160" y="40" width="100" height="48" fill="#6C7584"/>
+      <text x="210" y="64" fill="#FFFFFF" text-anchor="middle"
+            dominant-baseline="middle" font-size="11">QUEUE</text>
+      <text x="140" y="138" fill="#000000" text-anchor="middle" font-size="11">Boundary / operator zone</text>
+    </g>
+  </g>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       SECTION 4 — ARROW STYLES
+       ════════════════════════════════════════════════════════════════════ -->
+  <g transform="translate(40, 500)">
+    <text x="0" y="0" font-size="18" font-weight="700" fill="#000000">Arrow styles</text>
+
+    <!-- Synchronous: solid + filled triangle -->
+    <g transform="translate(0, 30)">
+      <line x1="0" y1="20" x2="200" y2="20" stroke="#298DFF" stroke-width="1.5"
+            marker-end="url(#arrow-sync)"/>
+      <text x="100" y="14" fill="#298DFF" text-anchor="middle" font-size="11">Synchronous call</text>
+      <text x="100" y="50" fill="#000000" text-anchor="middle" font-size="11">Solid + filled triangle</text>
+    </g>
+
+    <!-- Asynchronous: dashed + open head -->
+    <g transform="translate(240, 30)">
+      <line x1="0" y1="20" x2="200" y2="20" stroke="#298DFF" stroke-width="1.5"
+            stroke-dasharray="6 4" marker-end="url(#arrow-async)"/>
+      <text x="100" y="14" fill="#298DFF" text-anchor="middle" font-size="11">Async / optional</text>
+      <text x="100" y="50" fill="#000000" text-anchor="middle" font-size="11">Dashed + open head</text>
+    </g>
+
+    <!-- Bidirectional: solid, no head -->
+    <g transform="translate(480, 30)">
+      <line x1="0" y1="20" x2="200" y2="20" stroke="#298DFF" stroke-width="1.5"/>
+      <text x="100" y="14" fill="#298DFF" text-anchor="middle" font-size="11">Bidirectional (rare)</text>
+      <text x="100" y="50" fill="#000000" text-anchor="middle" font-size="11">Solid, no head</text>
+    </g>
+  </g>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       SECTION 5 — TYPOGRAPHY / TEXT CASING REFERENCE
+       ════════════════════════════════════════════════════════════════════ -->
+  <g transform="translate(40, 640)">
+    <text x="0" y="0" font-size="18" font-weight="700" fill="#000000">Typography</text>
+
+    <g transform="translate(0, 30)">
+      <text x="0" y="0"  fill="#000000" font-size="14" font-weight="700">Inter / sans-serif — diagram default</text>
+      <text x="0" y="22" fill="#000000" font-size="13">ALL CAPS — primary node labels</text>
+      <text x="0" y="42" fill="#000000" font-size="13">Sentence case — sub-labels, boundary labels, captions</text>
+      <text x="0" y="62" fill="#298DFF" font-size="12">Sui Blue 500 — numbered step labels above arrows</text>
+      <text x="0" y="82" fill="#000000" font-size="12" font-family="DM Mono, monospace">DM Mono — code identifiers preserve original casing</text>
+    </g>
+  </g>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       SECTION 6 — SUI DROPLET LOGO (canonical, from brand kit)
+       ════════════════════════════════════════════════════════════════════ -->
+  <g transform="translate(40, 800)">
+    <text x="0" y="0" font-size="18" font-weight="700" fill="#000000">Sui droplet (canonical)</text>
+    <use href="#sui-droplet" x="0" y="20" width="78" height="100"/>
+    <use href="#sui-droplet" x="100" y="20" width="78" height="100" fill="#000000" style="color:#000000"/>
+    <text x="40"  y="140" fill="#000000" text-anchor="middle" font-size="11">Sui Blue</text>
+    <text x="140" y="140" fill="#000000" text-anchor="middle" font-size="11">(use brand-kit Black SVG for Black variant)</text>
+  </g>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       SECTION 7 — COMPLIANCE CALLOUT
+       ════════════════════════════════════════════════════════════════════ -->
+  <g transform="translate(40, 980)">
+    <rect x="0" y="0" width="1100" height="120" fill="#E6F1FB" stroke="#298DFF" stroke-width="1.5"/>
+    <text x="20" y="28" font-size="14" font-weight="700" fill="#000000">Hard rules (anything below = ❌ Fail)</text>
+    <text x="20" y="52" font-size="12" fill="#000000">• Off-brand color anywhere (only the Sui brand palette is allowed: core + Blue 50–900 + Gray 50–900)</text>
+    <text x="20" y="70" font-size="12" fill="#000000">• Mixed C4 levels in one diagram • Diamond outside flowchart/sequence • Cylinder for anything but a data store</text>
+    <text x="20" y="88" font-size="12" fill="#000000">• Unlabeled decision-diamond exits • Labels overlapping arrow strokes</text>
+    <text x="20" y="106" font-size="12" fill="#000000">• Text contrast below 3:1 (WCAG AA graphic minimum) • Color used as the sole differentiator</text>
+  </g>
+</svg>

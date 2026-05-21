@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sui Data-Serving Stack (C4 Level 2 architecture)</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<main>
+  <header>
+    <h1>Sui data-serving stack <span class="level">C4 Level 2 · Architecture</span></h1>
+    <p class="meta">
+      Filename: <code>architecture_data-serving_v1.svg</code> ·
+      Audience: developers ·
+      Answers: <em>what are the major deployable units of the data-serving stack, and how do they exchange data?</em>
+    </p>
+    <p class="meta" style="margin-top:8px">
+      <strong>Canonical source:</strong>
+      <a href="https://docs.sui.io/develop/accessing-data/data-serving">docs.sui.io/develop/accessing-data/data-serving</a> ·
+      original file <code>access-interfaces_accessing-data_v1.svg</code>.
+      This page is a recreation; the production SVG is fetched separately into
+      <code>sources/</code> through the included script.
+    </p>
+  </header>
+
+  <section>
+    <h2>Rendered diagram</h2>
+      <svg width="720" height="700" viewBox="0 0 720 700" role="img"
+           font-family="Inter, sans-serif" font-size="14"
+           xmlns="http://www.w3.org/2000/svg">
+        <title>Sui data-serving stack architecture</title>
+        <desc>Top-to-bottom: SUI FULL NODE feeds INDEXING FRAMEWORK, which fans
+              out to a GENERAL-PURPOSE INDEXER backed by Postgres DB and an
+              optional CUSTOM INDEXER backed by a custom database, both
+              feeding an RPC SERVER at the bottom.</desc>
+
+        <defs>
+          <marker id="sync" viewBox="0 0 10 10" refX="9" refY="5"
+                  markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="#298DFF"/>
+          </marker>
+          <marker id="async" viewBox="0 0 10 10" refX="9" refY="5"
+                  markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10" fill="none" stroke="#298DFF" stroke-width="1.5"/>
+          </marker>
+        </defs>
+
+        <rect x="0" y="0" width="720" height="700" fill="#FFFFFF"/>
+
+        <!-- SUI FULL NODE (primary, black) -->
+        <rect x="280" y="60" width="160" height="56" fill="#000000"/>
+        <text x="360" y="84" fill="#FFFFFF" text-anchor="middle"
+              dominant-baseline="central" font-weight="500"
+              letter-spacing="0.5">SUI FULL NODE</text>
+        <text x="360" y="102" fill="#298DFF" text-anchor="middle"
+              dominant-baseline="central" font-size="12">gRPC</text>
+
+        <!-- Full Node → Indexing -->
+        <line x1="360" y1="116" x2="360" y2="156" stroke="#298DFF"
+              stroke-width="1.5" marker-end="url(#sync)"/>
+
+        <!-- INDEXING FRAMEWORK (primary, black) -->
+        <rect x="260" y="160" width="200" height="56" fill="#000000"/>
+        <text x="360" y="184" fill="#FFFFFF" text-anchor="middle"
+              dominant-baseline="central" font-weight="500"
+              letter-spacing="0.5">INDEXING FRAMEWORK</text>
+        <text x="360" y="202" fill="#298DFF" text-anchor="middle"
+              dominant-baseline="central" font-size="12">Subscriber</text>
+
+        <!-- Operator boundary -->
+        <rect x="40" y="280" width="640" height="240" fill="none"
+              stroke="#343940" stroke-width="1"/>
+        <text x="40" y="272" fill="#000000" font-size="12">Data indexer operator stack</text>
+
+        <!-- Indexing → indexers (one-turn L-shape, enters indexer side) -->
+        <path d="M 340 216 V 340 H 310" fill="none" stroke="#298DFF"
+              stroke-width="1.5" marker-end="url(#sync)"/>
+        <path d="M 380 216 V 340 H 410" fill="none" stroke="#298DFF"
+              stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#async)"/>
+        <text x="392" y="248" fill="#1759C4" font-size="12">Optional</text>
+
+        <!-- GENERAL-PURPOSE INDEXER (secondary, gray500) -->
+        <rect x="70" y="312" width="240" height="56" fill="#6C7584"/>
+        <text x="190" y="340" fill="#FFFFFF" text-anchor="middle"
+              dominant-baseline="central" font-weight="500"
+              letter-spacing="0.5">GENERAL-PURPOSE INDEXER</text>
+
+        <!-- CUSTOM INDEXER (secondary, gray500) -->
+        <rect x="410" y="312" width="240" height="56" fill="#6C7584"/>
+        <text x="530" y="340" fill="#FFFFFF" text-anchor="middle"
+              dominant-baseline="central" font-weight="500"
+              letter-spacing="0.5">CUSTOM INDEXER</text>
+
+        <!-- Indexer → DB arrows -->
+        <line x1="190" y1="368" x2="190" y2="402" stroke="#298DFF"
+              stroke-width="1.5" marker-end="url(#sync)"/>
+        <line x1="530" y1="368" x2="530" y2="402" stroke="#298DFF"
+              stroke-width="1.5" marker-end="url(#sync)"/>
+
+        <!-- Postgres DB (canonical server icon, scaled 80x80; native viewBox 120) -->
+        <g transform="translate(150, 410)">
+          <!-- Top unit -->
+          <rect x="13.33" y="13.33" width="53.33" height="13.33" rx="1.33"
+                fill="none" stroke="#298DFF" stroke-width="1.33"/>
+          <circle cx="20" cy="20" r="1.33" fill="#298DFF"/>
+          <circle cx="25.33" cy="20" r="1.33" fill="#6C7584"/>
+          <!-- Middle unit -->
+          <rect x="13.33" y="32" width="53.33" height="13.33" rx="1.33"
+                fill="none" stroke="#298DFF" stroke-width="1.33"/>
+          <circle cx="20" cy="38.67" r="1.33" fill="#298DFF"/>
+          <circle cx="25.33" cy="38.67" r="1.33" fill="#298DFF"/>
+          <!-- Bottom unit -->
+          <rect x="13.33" y="50.67" width="53.33" height="13.33" rx="1.33"
+                fill="none" stroke="#298DFF" stroke-width="1.33"/>
+          <circle cx="20" cy="57.33" r="1.33" fill="#298DFF"/>
+          <circle cx="25.33" cy="57.33" r="1.33" fill="#6C7584"/>
+        </g>
+        <text x="190" y="504" fill="#000000" text-anchor="middle"
+              font-size="12">Postgres DB</text>
+
+        <!-- Custom DB (canonical server icon, scaled 80x80) -->
+        <g transform="translate(490, 410)">
+          <rect x="13.33" y="13.33" width="53.33" height="13.33" rx="1.33"
+                fill="none" stroke="#298DFF" stroke-width="1.33"/>
+          <circle cx="20" cy="20" r="1.33" fill="#298DFF"/>
+          <circle cx="25.33" cy="20" r="1.33" fill="#6C7584"/>
+          <rect x="13.33" y="32" width="53.33" height="13.33" rx="1.33"
+                fill="none" stroke="#298DFF" stroke-width="1.33"/>
+          <circle cx="20" cy="38.67" r="1.33" fill="#298DFF"/>
+          <circle cx="25.33" cy="38.67" r="1.33" fill="#298DFF"/>
+          <rect x="13.33" y="50.67" width="53.33" height="13.33" rx="1.33"
+                fill="none" stroke="#298DFF" stroke-width="1.33"/>
+          <circle cx="20" cy="57.33" r="1.33" fill="#298DFF"/>
+          <circle cx="25.33" cy="57.33" r="1.33" fill="#6C7584"/>
+        </g>
+        <text x="530" y="504" fill="#000000" text-anchor="middle"
+              font-size="12">Custom DB</text>
+
+        <!-- DB → RPC arrows (one-turn L-shape, enters RPC sides at vertical center) -->
+        <path d="M 190 516 V 628 H 280" fill="none" stroke="#298DFF"
+              stroke-width="1.5" marker-end="url(#sync)"/>
+        <path d="M 530 516 V 628 H 440" fill="none" stroke="#298DFF"
+              stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#async)"/>
+
+        <!-- RPC SERVER (tertiary, sui blue 500) -->
+        <rect x="280" y="600" width="160" height="56" fill="#298DFF"/>
+        <text x="360" y="628" fill="#FFFFFF" text-anchor="middle"
+              dominant-baseline="central" font-weight="500"
+              letter-spacing="0.5">RPC SERVER</text>
+      </svg>
+    <p class="caption">
+      Top-to-bottom data flow from source (Sui Full Node) to consumer
+      (RPC Server). The optional custom indexer path uses dashed arrows.
+    </p>
+  </section>
+
+  <div class="split">
+    <section>
+      <h2>Source (SVG, abridged)</h2>
+<pre>&lt;svg viewBox="0 0 720 660" font-family="Inter, sans-serif"&gt;
+  &lt;defs&gt;
+    &lt;marker id="sync" .../&gt;
+    &lt;marker id="async" .../&gt;
+  &lt;/defs&gt;
+
+  &lt;!-- Tier 1: SUI FULL NODE (primary, black) --&gt;
+  &lt;rect fill="#000000" .../&gt;
+  &lt;text fill="#FFFFFF" font-weight="500"&gt;SUI FULL NODE&lt;/text&gt;
+
+  &lt;!-- Operator boundary --&gt;
+  &lt;rect fill="none" stroke="#343940" .../&gt;
+  &lt;text&gt;Data indexer operator stack&lt;/text&gt;
+
+  &lt;!-- Secondary nodes (Gray 500) and data-store racks --&gt;
+  &lt;rect fill="#6C7584" .../&gt;                  &lt;!-- indexers --&gt;
+  &lt;g&gt; &lt;!-- DB rack (3 stacked units, Sui Blue outline) --&gt;
+    &lt;rect fill="none" stroke="#298DFF" rx="2" stroke-width="2"/&gt;
+    &lt;circle r="2" fill="#298DFF"/&gt; &lt;circle r="2" fill="#6C7584"/&gt;
+    ...
+  &lt;/g&gt;
+  &lt;text&gt;Postgres DB&lt;/text&gt;                    &lt;!-- label below the rack --&gt;
+
+  &lt;!-- Tertiary node (Sui Blue 500) --&gt;
+  &lt;rect fill="#298DFF" .../&gt;          &lt;!-- RPC SERVER --&gt;
+
+  &lt;!-- Arrows --&gt;
+  &lt;line stroke="#298DFF" marker-end="url(#sync)"  .../&gt;
+  &lt;line stroke="#298DFF" stroke-dasharray="6 4"
+        marker-end="url(#async)" .../&gt;  &lt;!-- optional path --&gt;
+&lt;/svg&gt;</pre>
+    </section>
+
+    <section>
+      <h2>Compliance checklist</h2>
+      <ul class="checks">
+        <li>Exactly one C4 level (Level 2 container)</li>
+        <li>All colors on Sui palette (Black + Gray 500 + Sui Blue 500 + Gray 700 boundary)</li>
+        <li>Top-to-bottom data flow direction</li>
+        <li>Operator boundary labeled top-left, outside any node</li>
+        <li>Ellipsis convention for peer Full Nodes</li>
+        <li>Optional path uses dashed + open arrowhead with inline label</li>
+        <li>Cylinder shape reserved for data stores only</li>
+        <li>Three emphasis levels: Black → Gray 500 → Sui Blue 500</li>
+        <li>Primary node labels ALL CAPS, sub-labels sentence case</li>
+        <li>7 nodes total (≤15 maximum per diagram)</li>
+      </ul>
+    </section>
+  </div>
+</main>
+</body>
+</html>

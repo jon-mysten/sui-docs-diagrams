@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sui Object Transfer (C4 Level 4 flowchart)</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<main>
+  <header>
+    <h1>Sui object transfer <span class="level">C4 Level 4 · Flowchart</span></h1>
+    <p class="meta">
+      Filename: <code>flowchart_object-transfer_v1.svg</code> ·
+      Audience: implementers ·
+      Answers: <em>what state transitions and decisions does an owned-object transfer go through?</em>
+    </p>
+  </header>
+
+  <section>
+    <h2>Rendered diagram</h2>
+      <svg width="720" height="340" viewBox="0 0 720 340" role="img"
+           font-family="Inter, sans-serif" font-size="14"
+           xmlns="http://www.w3.org/2000/svg">
+        <title>Sui object transfer flowchart</title>
+        <desc>Left-to-right flow: OBJECT A enters a decision diamond
+              OWNER VALID. The Valid exit leads to OBJECT B which advances
+              through TX-2 to OBJECT C (final state) and a RECEIPT byproduct.
+              The Invalid exit leads to a REJECTED state in Gray 500.</desc>
+
+        <defs>
+          <marker id="sync" viewBox="0 0 10 10" refX="9" refY="5"
+                  markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="#298DFF"/>
+          </marker>
+        </defs>
+
+        <rect x="0" y="0" width="720" height="340" fill="#FFFFFF"/>
+
+        <!-- OBJECT A (primary, black) -->
+        <rect x="30" y="140" width="120" height="60" fill="#000000"/>
+        <text x="90" y="170" fill="#FFFFFF" text-anchor="middle"
+              dominant-baseline="central" font-weight="500"
+              letter-spacing="0.5">OBJECT A</text>
+        <text x="90" y="188" fill="#298DFF" text-anchor="middle"
+              dominant-baseline="central" font-size="12">Owned</text>
+
+        <!-- TX-1 arrow -->
+        <line x1="150" y1="170" x2="240" y2="170" stroke="#298DFF"
+              stroke-width="1.5" marker-end="url(#sync)"/>
+        <text x="195" y="160" fill="#1759C4" text-anchor="middle"
+              font-size="12">TX-1</text>
+
+        <!-- Decision diamond: OWNER VALID? -->
+        <polygon points="320,140 380,170 320,200 260,170" fill="#000000"/>
+        <text x="320" y="170" fill="#FFFFFF" text-anchor="middle"
+              dominant-baseline="central" font-weight="500"
+              letter-spacing="0.5" font-size="12">OWNER VALID?</text>
+
+        <!-- Valid branch arrow -->
+        <line x1="380" y1="170" x2="450" y2="170" stroke="#298DFF"
+              stroke-width="1.5" marker-end="url(#sync)"/>
+        <text x="415" y="160" fill="#1759C4" text-anchor="middle"
+              font-size="12">Valid</text>
+
+        <!-- OBJECT B (primary, black) -->
+        <rect x="450" y="140" width="120" height="60" fill="#000000"/>
+        <text x="510" y="170" fill="#FFFFFF" text-anchor="middle"
+              dominant-baseline="central" font-weight="500"
+              letter-spacing="0.5">OBJECT B</text>
+        <text x="510" y="188" fill="#298DFF" text-anchor="middle"
+              dominant-baseline="central" font-size="12">Transferred</text>
+
+        <!-- TX-2 arrow to OBJECT C -->
+        <line x1="570" y1="170" x2="620" y2="170" stroke="#298DFF"
+              stroke-width="1.5" marker-end="url(#sync)"/>
+        <text x="595" y="160" fill="#1759C4" text-anchor="middle"
+              font-size="12">TX-2</text>
+
+        <!-- OBJECT C (tertiary, blue), final state -->
+        <rect x="620" y="140" width="80" height="60" fill="#1759C4"/>
+        <text x="660" y="170" fill="#FFFFFF" text-anchor="middle"
+              dominant-baseline="central" font-weight="500"
+              letter-spacing="0.5" font-size="12">OBJECT C</text>
+        <text x="660" y="188" fill="#FFFFFF" text-anchor="middle"
+              dominant-baseline="central" font-size="11">Final</text>
+
+        <!-- RECEIPT byproduct (Gray 500), branched off TX-2 -->
+        <line x1="510" y1="200" x2="510" y2="260" stroke="#298DFF"
+              stroke-width="1.5" marker-end="url(#sync)"/>
+        <text x="522" y="230" fill="#1759C4" font-size="12">Byproduct</text>
+        <rect x="450" y="260" width="120" height="50" fill="#6C7584"/>
+        <text x="510" y="285" fill="#FFFFFF" text-anchor="middle"
+              dominant-baseline="central" font-weight="500"
+              letter-spacing="0.5">RECEIPT</text>
+
+        <!-- REJECTED branch (Gray 500), Invalid exit -->
+        <line x1="320" y1="200" x2="320" y2="270" stroke="#298DFF"
+              stroke-width="1.5" marker-end="url(#sync)"/>
+        <text x="332" y="240" fill="#1759C4" font-size="12">Invalid</text>
+        <rect x="260" y="270" width="120" height="50" fill="#6C7584"/>
+        <text x="320" y="295" fill="#FFFFFF" text-anchor="middle"
+              dominant-baseline="central" font-weight="500"
+              letter-spacing="0.5">REJECTED</text>
+      </svg>
+    <p class="caption">
+      Each object state is its own node. State changes (TX-1, TX-2) produce
+      new nodes rather than mutating existing ones. The decision diamond has
+      exactly two labeled exits in sentence case. Byproducts and rejected
+      states use Gray 500 to recede from the primary value path.
+    </p>
+  </section>
+
+  <div class="split">
+
+    <section>
+      <h2>Compliance checklist</h2>
+      <ul class="checks">
+        <li>Exactly one C4 level (Level 4 flowchart)</li>
+        <li>Diamond used (allowed in flowcharts)</li>
+        <li>Diamond has exactly 2 exits, both labeled sentence case</li>
+        <li>Transaction labels (TX-1, TX-2) ride on arrows, not in nodes</li>
+        <li>State changes produce new nodes; no in-place mutation</li>
+        <li>Byproducts (RECEIPT) and rejected states use Gray 500</li>
+        <li>Final state (OBJECT C) uses Sui Blue 500 accent</li>
+        <li>Left-to-right layout for time progression</li>
+        <li>All colors on Sui palette</li>
+        <li>6 nodes total (≤15)</li>
+      </ul>
+    </section>
+  </div>
+</main>
+</body>
+</html>

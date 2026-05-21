@@ -1,0 +1,21 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <!-- Server body - 3 stacked rectangles representing server units -->
+  
+  <!-- Top unit -->
+  <rect x="20" y="20" width="80" height="20" rx="2" fill="none" stroke="#298DFF" stroke-width="2"/>
+  <!-- Status lights -->
+  <circle cx="30" cy="30" r="2" fill="#298DFF"/>
+  <circle cx="38" cy="30" r="2" fill="#6C7584"/>
+  
+  <!-- Middle unit -->
+  <rect x="20" y="48" width="80" height="20" rx="2" fill="none" stroke="#298DFF" stroke-width="2"/>
+  <!-- Status lights -->
+  <circle cx="30" cy="58" r="2" fill="#298DFF"/>
+  <circle cx="38" cy="58" r="2" fill="#298DFF"/>
+  
+  <!-- Bottom unit -->
+  <rect x="20" y="76" width="80" height="20" rx="2" fill="none" stroke="#298DFF" stroke-width="2"/>
+  <!-- Status lights -->
+  <circle cx="30" cy="86" r="2" fill="#298DFF"/>
+  <circle cx="38" cy="86" r="2" fill="#6C7584"/>
+</svg>

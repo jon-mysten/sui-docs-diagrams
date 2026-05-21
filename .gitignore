@@ -1,0 +1,34 @@
+# Build outputs (created locally when running the build script)
+/dist/
+/build/
+
+# OS noise
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor noise
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python (audit script byproducts)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.venv/
+venv/
+
+# Node (if anyone runs the React primitives locally)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local override / scratch
+*.local
+scratch/

@@ -1,0 +1,134 @@
+/**
+ * Shared styles for rendered Sui diagram examples.
+ * Consumed by every page in ./examples/
+ */
+
+@import url('./tokens.css');
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--sui-font-diagram);
+  font-size: var(--sui-font-size);
+  color: var(--sui-black);
+  background: var(--sui-white);
+  line-height: 1.5;
+}
+
+body { padding: 40px 24px 80px; }
+
+main {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+/* ────────── Page header ────────── */
+
+header { margin-bottom: 32px; }
+
+h1 {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0 0 4px;
+}
+
+h1 .level {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  background: var(--sui-blue-50);
+  color: var(--sui-blue-700);
+  border: 1px solid var(--sui-blue-200);
+  font-size: 12px;
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+.meta {
+  font-size: 13px;
+  color: var(--sui-gray-600);
+  margin: 4px 0 0;
+}
+
+.meta code {
+  font-family: var(--sui-font-mono);
+  font-size: 12px;
+  background: var(--sui-gray-50);
+  padding: 1px 6px;
+  border: 1px solid var(--sui-gray-100);
+}
+
+h2 {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 32px 0 12px;
+  color: var(--sui-black);
+}
+
+/* ────────── Diagram SVG ────────── */
+
+/*
+ * Diagrams render naked, matching how docs.sui.io places them inline
+ * in prose with no wrapping card chrome. SVG sits as a block element
+ * so it occupies its own line without inline whitespace artifacts.
+ */
+svg { max-width: 100%; height: auto; display: block; margin: 16px 0; }
+
+.caption {
+  font-size: var(--sui-font-size-sub);
+  color: var(--sui-gray-600);
+  margin-top: 12px;
+}
+
+/* ────────── Source code block ────────── */
+
+pre {
+  background: var(--sui-gray-50);
+  border: 1px solid var(--sui-gray-100);
+  padding: 16px;
+  font-family: var(--sui-font-mono);
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-x: auto;
+  margin: 0;
+  color: var(--sui-gray-900);
+}
+
+/* ────────── Compliance checklist ────────── */
+
+.checks {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+}
+
+.checks li {
+  padding: 4px 0 4px 24px;
+  position: relative;
+  color: var(--sui-gray-700);
+}
+
+.checks li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 10px;
+  height: 10px;
+  background: var(--sui-blue-500);
+}
+
+/* ────────── Two-column layout for diagram + source ────────── */
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 900px) {
+  .split { grid-template-columns: 3fr 2fr; }
+}

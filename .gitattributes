@@ -1,0 +1,23 @@
+# Default to LF line endings everywhere
+* text=auto eol=lf
+
+# Explicit text files
+*.md       text eol=lf
+*.html     text eol=lf
+*.svg      text eol=lf
+*.css      text eol=lf
+*.json     text eol=lf
+*.jsx      text eol=lf
+*.tsx      text eol=lf
+*.ts       text eol=lf
+*.js       text eol=lf
+*.py       text eol=lf
+*.yaml     text eol=lf
+*.yml      text eol=lf
+
+# Explicit binary files
+*.woff2    binary
+*.ttf      binary
+*.png      binary
+*.jpg      binary
+*.zip      binary
