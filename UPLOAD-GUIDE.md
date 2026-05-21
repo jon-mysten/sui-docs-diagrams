@@ -27,14 +27,14 @@ complete it.
 Skip this slot, unless you have already published the folder from this
 package to a GitHub repository. If you have published it:
 
-- Paste the repository URL (for example, `https://github.com/your-org/sui-claude-design`).
+- Paste the repository URL (for example, `https://github.com/jon-mysten/sui-docs-diagrams`).
 - Claude pulls the same files you would otherwise drag in manually.
 
 If you skip this slot, use slot 2 instead.
 
 ### Slot 2: Link code from your computer
 
-Drag the `design-system/` folder (not the parent `sui-claude-design/`
+Drag the `design-system/` folder (not the parent `sui-docs-claude-design/`
 folder, just `design-system/`) into this slot. It contains the following.
 
 ```
@@ -131,7 +131,7 @@ This is expected and easy to fix. The banner carries a one-click
 **Upload fonts** button. Click it and drop in:
 
 - Either the 14 font files from `assets/fonts/` directly, or
-- The flat `sui-fonts.zip` bundle that accompanies this package (every
+- The flat `sui-docs-fonts.zip` bundle that accompanies this package (every
   font file at the archive root with no nested folders)
 
 Either works. The flat bundle is faster on Safari and Firefox, which
@@ -220,7 +220,7 @@ If https://docs.sui.io/references/contribute/diagram-standards updates:
 
 | Symptom | Fix |
 |---|---|
-| **"Missing brand fonts. Claude is rendering typography with substitute web fonts"** | Claude Design's font extractor treats fonts as a dedicated ingestion path, not as auto-discoverable assets within the design system zip. Click the **Upload fonts** button on the warning banner and drop the 14 files from `assets/fonts/` (or the flat `sui-fonts.zip` bundle) directly into that slot. If the warning persists after uploading, you uploaded the variable TTFs from the brand kit instead of the static-weight WOFF2 and TTF set. Remove the variable fonts and use only the static weights from `assets/fonts/`. |
+| **"Missing brand fonts. Claude is rendering typography with substitute web fonts"** | Claude Design's font extractor treats fonts as a dedicated ingestion path, not as auto-discoverable assets within the design system zip. Click the **Upload fonts** button on the warning banner and drop the 14 files from `assets/fonts/` (or the flat `sui-docs-fonts.zip` bundle) directly into that slot. If the warning persists after uploading, you uploaded the variable TTFs from the brand kit instead of the static-weight WOFF2 and TTF set. Remove the variable fonts and use only the static weights from `assets/fonts/`. |
 | Generated diagrams use the wrong reds or greens for state | Re-upload `DESIGN.md`. Claude is missing the §3 hard color rule. |
 | Decision diamonds appearing in architecture diagrams | Cite `DESIGN.md §6` and ask Claude to split into a companion flowchart. |
 | Output uses generic sans-serif (Helvetica, Arial) instead of Inter | The fonts uploaded, but Claude Design did not link them to a `font-family`. In design system settings, open the Typography section and set the primary font to Inter. The static weights you uploaded populate the weight dropdown automatically. |

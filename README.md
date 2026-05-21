@@ -30,7 +30,7 @@ download.
 
 ## Quick start
 
-1. Go to the [Releases page](https://github.com/jon-mysten/sui-docs-diagrams/releases)
+1. Go to the [Releases page](https://github.com/<your-handle>/sui-docs-diagrams/releases)
    and download 2 files from the latest release:
    - `sui-docs-claude-design.zip` (the design system package)
    - `sui-docs-fonts.zip` (the brand fonts bundle, uploaded separately)

@@ -24,7 +24,7 @@ the canonical standards page at
   anti-example showing a non-compliant transactions flowchart paired
   with its compliant rewrite.
 - **Sui brand fonts** (Inter, Inter Tight, DM Mono) in WOFF2 and TTF,
-  packaged separately as `sui-fonts.zip` for Claude Design's
+  packaged separately as `sui-docs-fonts.zip` for Claude Design's
   dedicated font upload path.
 - **Canonical data-store icon** (`server-icon-minimal.svg`): three
   stacked rack units in 2px Sui Blue outline with status dots.
