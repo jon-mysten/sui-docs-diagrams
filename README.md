@@ -32,15 +32,15 @@ download.
 
 1. Go to the [Releases page](https://github.com/jon-mysten/sui-docs-diagrams/releases)
    and download 2 files from the latest release:
-   - `sui-claude-design.zip` (the design system package)
-   - `sui-fonts.zip` (the brand fonts bundle, uploaded separately)
+   - `sui-docs-claude-design.zip` (the design system package)
+   - `sui-docs-fonts.zip` (the brand fonts bundle, uploaded separately)
 2. Open [claude.ai/design](https://claude.ai/design) and create a new
    design system.
-3. Drag the contents of `sui-claude-design.zip` into the matching
+3. Drag the contents of `sui-docs-claude-design.zip` into the matching
    Claude Design upload slots. The `UPLOAD-GUIDE.md` file inside the
    zip walks through this slot by slot.
 4. When Claude Design displays the **Missing brand fonts** banner,
-   click the **Upload fonts** button and drop in `sui-fonts.zip`.
+   click the **Upload fonts** button and drop in `sui-docs-fonts.zip`.
    Claude Design's font analyzer is a separate ingestion path from
    the design system upload.
 5. Attach the `DESIGN.md` file to the first chat project you create
