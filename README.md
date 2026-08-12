@@ -11,6 +11,10 @@ The page describes what compliant diagrams look like and when to use
 Mermaid versus Claude Design; this repository provides the actual
 package you upload to Claude Design.
 
+Walrus documentation has its own diagram design system, released from
+this repository on a separate tag line. See
+[Walrus diagrams](#walrus-diagrams) below.
+
 ## What this is for
 
 Technical diagrams in the Sui documentation come in 2 sizes:
@@ -30,8 +34,8 @@ download.
 
 ## Quick start
 
-1. Go to the [Releases page](https://github.com/<your-handle>/sui-docs-diagrams/releases)
-   and download 2 files from the latest release:
+1. Go to the [Releases page](https://github.com/jon-mysten/sui-docs-diagrams/releases)
+   and download 2 files from the latest `v*` release:
    - `sui-docs-claude-design.zip` (the design system package)
    - `sui-docs-fonts.zip` (the brand fonts bundle, uploaded separately)
 2. Open [claude.ai/design](https://claude.ai/design) and create a new
@@ -53,6 +57,58 @@ architecture diagram of the indexer stack") produces Sui-compliant SVG
 output. Export the SVG and PNG, commit both to the docs repo alongside
 the page that references them, and follow the file-naming convention
 in the diagram standards.
+
+## Walrus diagrams
+
+Walrus documentation draws its diagrams with a sibling design system:
+the same C4 discipline, sharp corners, and one-turn arrow routing, but
+a different palette and a dark canvas by default (Midnight background,
+Purple nodes, Mint arrows, with an optional light Tusk mode). Its
+canonical standards page is
+[`docs.wal.app/references/contribute/diagram-standards`](https://docs.wal.app/references/contribute/diagram-standards).
+
+The two systems ship on separate tag lines so they version
+independently: `v*` tags are the Sui package, `walrus-v*` tags are the
+Walrus package.
+
+1. Download `walrus-diagrams-design-system.zip` from the
+   [`walrus-v1.0.0` release](https://github.com/jon-mysten/sui-docs-diagrams/releases/tag/walrus-v1.0.0).
+2. Open [claude.ai/design](https://claude.ai/design) and create a new
+   design system, then upload the zip. `_ds_manifest.json` declares the
+   tokens, components, cards, and fonts, so the slots populate on
+   ingest.
+3. Read `readme.md` inside the zip first. It is the design guide and
+   the file manifest: the palette and its compliance rules, the casing
+   and label rules, node geometry, the arrow taxonomy, and an entry for
+   every file in the package.
+
+The package doubles as an agent skill. `SKILL.md` at its root is
+Agent-Skills-compatible, so unzipping it into a skills directory makes
+it invocable from Claude Code as `walrus-diagrams-design`.
+
+Unlike the Sui package, the brand fonts are bundled inside this zip
+(`assets/fonts/`, Inter + Inter Tight + DM Mono in WOFF2 and TTF).
+There is no separate Walrus font download.
+
+```
+walrus-diagrams-design-system.zip
+├── readme.md            The design guide and manifest. Start here.
+├── SKILL.md             Agent-Skills entry point.
+├── tokens/              colors.css, typography.css, layout.css, and
+│                        the same tokens as tokens.json.
+├── components/          13 diagram primitives (Node, Actor,
+│                        ExternalSystem, DataStore, Boundary, Diamond,
+│                        Arrow, ArrowMarkers, Lifeline, FanOut,
+│                        PhaseBar, StepLabel, Diagram), each with
+│                        .jsx, .d.ts, .prompt.md, and a specimen card.
+├── guidelines/          12 foundation specimen cards (color, type,
+│                        spacing, brand).
+├── examples/            5 full diagrams spanning the C4 levels.
+├── demos/               Interactive diagram demos and the gallery,
+│                        sequence-player, and games shells.
+├── assets/              Fonts, the data-store icon, droplet marks.
+└── _ds_bundle.js        Prebuilt component bundle for hand-authoring.
+```
 
 ## What's in this repository
 

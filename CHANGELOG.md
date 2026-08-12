@@ -1,8 +1,79 @@
 # Changelog
 
-Per-release notes for Sui Docs Diagrams. Newest releases appear first.
-Each entry describes user-visible changes; deeper rationale lives in
-`DESIGN.md` and the per-section documentation.
+Per-release notes for the diagram packages in this repository. Newest
+releases appear first. Each entry describes user-visible changes;
+deeper rationale lives in `DESIGN.md` and the per-section
+documentation.
+
+Two packages ship from this repository on separate tag lines. `v*` tags
+release the Sui package; `walrus-v*` tags release the Walrus package.
+
+## walrus-v1.0.0
+
+Initial release of the Walrus Diagrams Design System, a sibling package
+covering diagrams in the Walrus documentation. It implements the
+canonical standards page at
+[`docs.wal.app/references/contribute/diagram-standards`](https://docs.wal.app/references/contribute/diagram-standards).
+
+### What's in this release
+
+- **A single download**, `walrus-diagrams-design-system.zip`, holding
+  the whole package: `readme.md` (the design guide and manifest),
+  `SKILL.md` (the Agent-Skills entry point), and
+  `_ds_manifest.json` (the Claude Design ingest manifest declaring
+  tokens, components, cards, and fonts).
+- **Design tokens** in `tokens/`: the 6 core brand colors (Midnight,
+  Tusk, Purple, Violet, Mint, Yellow), 3 derived shades (Purple tint,
+  Purple deep, Violet deep), typography, and layout geometry, as CSS
+  custom properties and as `tokens.json`.
+- **Thirteen diagram primitives** in `components/`: Node, Actor,
+  ExternalSystem, DataStore, Boundary, Diamond, Arrow, ArrowMarkers,
+  Lifeline, FanOut, PhaseBar, StepLabel, and the Diagram canvas
+  wrapper. Each ships a `.jsx` implementation, a `.d.ts`, a
+  `.prompt.md` usage note, and a rendered specimen card.
+- **Twelve foundation specimen cards** in `guidelines/` covering
+  color, type, spacing, and brand.
+- **Five example diagrams** in `examples/` spanning the C4 levels:
+  a Walrus network context, a data-serving architecture, a
+  transaction-lifecycle sequence, an object-transfer flowchart, and
+  a blob-availability verification flowchart.
+- **Interactive demos** in `demos/`, including the gallery, sequence
+  player, and games shells, plus the embeddable diagram variants used
+  in the Walrus docs.
+- **Brand assets** in `assets/`: Inter, Inter Tight, and DM Mono in
+  WOFF2 and TTF; the data-store icon; and the droplet mark in four
+  recolors.
+
+### Differences from the Sui package
+
+- **Dark canvas by default.** Midnight background, Purple primary
+  nodes, Mint arrows. Light mode is optional and flips arrows to
+  Purple, because Mint fails contrast on Tusk (1.3:1). Mint is never a
+  stroke, text, or arrow color in light mode.
+- **Fonts are bundled inside the package** rather than shipped as a
+  separate archive. There is no `walrus-docs-fonts.zip`.
+- **Interactive demos ship alongside the static rules.** Diagram
+  output is still static SVG/PNG, and gradients, glass, and motion
+  remain forbidden inside a diagram. The `demos/` directory carries
+  auto-looping interactive embeds built on a proposed
+  interactive-diagram standard, where that chrome lives around the
+  diagram rather than inside it.
+- **No static audit scripts.** The four Python audits in
+  `design-system/tools/` are Sui-package only; Walrus compliance is
+  enforced through the palette, the component primitives, and
+  `_adherence.oxlintrc.json`.
+
+### Known limitations
+
+- **No Walrus logo or wordmark.** Only the droplet symbol was
+  recovered from the source brand upload. Render the brand name in
+  plain Inter wherever a wordmark would go, and pull official marks
+  from the Walrus brand kit.
+- The `demos/` and `exports/` directories are extras and are not
+  described in the package's `readme.md` file manifest.
+- Like the Sui package, this one is diagram-scoped. There is no
+  application UI kit, so the example diagrams are the closest thing
+  to screens.
 
 ## v1.0.0
 
